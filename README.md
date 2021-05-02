@@ -26,3 +26,10 @@ $ ./gradlew bootRun
 ```
 $ open http://localhost:8080
 ```
+
+## 테스트 수행 방법
+
+```
+$ ./gradlew test
+```
+
