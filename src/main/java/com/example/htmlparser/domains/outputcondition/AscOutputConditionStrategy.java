@@ -25,10 +25,10 @@ public class AscOutputConditionStrategy implements OutputConditionStrategy {
     }
 
     private void sortNumber(String content) {
-        final String NUMBER_PATTERN = "[^-?0-9]+";
+        final String NOT_NUMBER_PATTERN = "[^-?0-9]+";
 
         List<Character> onlyNumbers = content
-            .replaceAll(NUMBER_PATTERN, "")
+            .replaceAll(NOT_NUMBER_PATTERN, "")
             .chars()
             .sorted()
             .mapToObj(c -> (char) c)
