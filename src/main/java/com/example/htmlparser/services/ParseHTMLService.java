@@ -7,7 +7,6 @@ import com.example.htmlparser.domains.parsing.Parser;
 import com.example.htmlparser.domains.parsing.ParserType;
 import com.example.htmlparser.domains.print.DividedResult;
 import com.example.htmlparser.domains.print.Printer;
-import com.example.htmlparser.utils.JsoupParser;
 
 @Service
 public class ParseHTMLService {
@@ -21,9 +20,9 @@ public class ParseHTMLService {
         this.parser = parser;
     }
 
-    public DividedResult print(String urlToParse, ParserType type, int outputUnits) {
-        parser.parse(urlToParse, type);
+    public DividedResult print(String urlToParse, ParserType type, int outputUnit) {
+        String parsedContent = parser.parse(urlToParse, type);
 
-        return null;
+        return printer.print(parsedContent, outputUnit);
     }
 }

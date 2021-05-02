@@ -15,9 +15,9 @@ public class DividerResultTest {
         String content = "asndlfkansdof1";
         int outputUnit = 3;
 
-        Divider divider = new Divider();
+        Divider divider = new Divider(content, outputUnit);
 
-        DividedResult dividedResult = divider.divide(content, outputUnit);
+        DividedResult dividedResult = divider.divide();
 
         List<String> expectedResults = new ArrayList<>();
         expectedResults.add("asn");
@@ -26,7 +26,7 @@ public class DividerResultTest {
         expectedResults.add("sdo");
 
         // When
-        List<String> quotients = dividedResult.getQuotients(outputUnit);
+        List<String> quotients = dividedResult.getQuotients();
 
         // Then
         assertThat(quotients).isNotEmpty();
@@ -42,12 +42,12 @@ public class DividerResultTest {
         String content = "asndlfkansdof1";
         int outputUnit = 3;
 
-        Divider divider = new Divider();
+        Divider divider = new Divider(content, outputUnit);
 
-        DividedResult dividedResult = divider.divide(content, outputUnit);
+        DividedResult dividedResult = divider.divide();
 
         // When
-        String remainder = dividedResult.getRemainder(outputUnit);
+        String remainder = dividedResult.getRemainder();
 
         // Then
         assertThat(remainder).isNotNull();
@@ -60,12 +60,12 @@ public class DividerResultTest {
         String content = "asndlfkansdo";
         int outputUnit = 3;
 
-        Divider divider = new Divider();
+        Divider divider = new Divider(content, outputUnit);
 
-        DividedResult dividedResult = divider.divide(content, outputUnit);
+        DividedResult dividedResult = divider.divide();
 
         // When
-        String remainder = dividedResult.getRemainder(outputUnit);
+        String remainder = dividedResult.getRemainder();
 
         // Then
         assertThat(remainder).isNull();

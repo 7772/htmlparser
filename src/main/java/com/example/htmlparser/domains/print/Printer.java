@@ -43,8 +43,8 @@ public class Printer {
     }
 
     private DividedResult divide(String content, int outputUnit) {
-        Divider divider = new Divider();
+        Divider divider = new Divider(content, outputUnit);
 
-        return divider.divide(content, outputUnit);
+        return divider.divide();
     }
 }

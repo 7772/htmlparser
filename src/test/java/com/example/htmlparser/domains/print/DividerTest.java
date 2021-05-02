@@ -5,15 +5,16 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DividerTest {
-    private final Divider divider = new Divider();
 
     @Test
     public void testContentIsNull() {
         // Given
         int outputUnit = 3;
 
+        Divider divider = new Divider(null, outputUnit);
+
         // When
-        DividedResult dividedResult = divider.divide(null, outputUnit);
+        DividedResult dividedResult = divider.divide();
 
         // Then
         assertThat(dividedResult.get()).isEmpty();
@@ -25,8 +26,10 @@ public class DividerTest {
         String content = "asndlfkansdof1";
         int outputUnit = 3;
 
+        Divider divider = new Divider(content, outputUnit);
+
         // When
-        DividedResult dividedResult = divider.divide(content, outputUnit);
+        DividedResult dividedResult = divider.divide();
 
         // Then
         assertThat(dividedResult.get()).isNotEmpty();
