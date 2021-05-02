@@ -1,6 +1,5 @@
 package com.example.htmlparser.domains.outputcondition;
 
-import com.example.htmlparser.domains.parsing.ParsedResult;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -8,54 +7,54 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AscOutputConditionStrategyTest {
-    private final ParsedResult parsedResult = new ParsedResult();
+    private final OutputConditionResult outputConditionResult = new OutputConditionResult();
 
     @Test
     public void testContentIsNull() {
         // Given
-        parsedResult.setContent(null);
+        outputConditionResult.setContent(null);
 
         OutputConditionStrategy strategy = new AscOutputConditionStrategy();
 
         // When
-        strategy.apply(parsedResult);
+        strategy.apply(outputConditionResult);
 
         // Then
-        assertThat(parsedResult.getContent()).isNull();
+        assertThat(outputConditionResult.getContent()).isNull();
     }
 
     @Test
     public void testSortNumberFirst() {
         // Given
         String content = "abc321";
-        parsedResult.setContent(content);
+        outputConditionResult.setContent(content);
 
         String result = "123abc";
 
         OutputConditionStrategy strategy = new AscOutputConditionStrategy();
 
         // When
-        strategy.apply(parsedResult);
+        strategy.apply(outputConditionResult);
 
         // Then
-        assertThat(parsedResult.getContent()).isEqualTo(result);
+        assertThat(outputConditionResult.getContent()).isEqualTo(result);
     }
 
     @Test
     public void testSortSameAlphabetAndUppercaseFirst() {
         // Given
         String content = "ABab";
-        parsedResult.setContent(content);
+        outputConditionResult.setContent(content);
 
         String result = "AaBb";
 
         OutputConditionStrategy strategy = new AscOutputConditionStrategy();
 
         // When
-        strategy.apply(parsedResult);
+        strategy.apply(outputConditionResult);
 
         // Then
-        assertThat(parsedResult.getContent()).isEqualTo(result);
+        assertThat(outputConditionResult.getContent()).isEqualTo(result);
     }
 
     @Test
@@ -66,10 +65,10 @@ public class AscOutputConditionStrategyTest {
         String content3 = "alzoOLVO391jvkcvj2IVJCBQOifhqifkco984JNkckcbqi38CKJCNDJZDJ93jfjdzlfidf29VKCI";
         String content4 = "OVZL0f9VKCKCNicmndh28dkCJCX8035678920987djcnHCXJyDJ27XCSJc81hd9XKCXzJCH28jc91dkc9JCJ8";
 
-        ParsedResult parsedResult1 = new ParsedResult();
-        ParsedResult parsedResult2 = new ParsedResult();
-        ParsedResult parsedResult3 = new ParsedResult();
-        ParsedResult parsedResult4 = new ParsedResult();
+        OutputConditionResult parsedResult1 = new OutputConditionResult();
+        OutputConditionResult parsedResult2 = new OutputConditionResult();
+        OutputConditionResult parsedResult3 = new OutputConditionResult();
+        OutputConditionResult parsedResult4 = new OutputConditionResult();
 
         parsedResult1.setContent(content1);
         parsedResult2.setContent(content2);

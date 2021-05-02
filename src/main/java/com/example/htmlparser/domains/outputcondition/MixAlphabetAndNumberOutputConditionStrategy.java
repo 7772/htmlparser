@@ -3,24 +3,25 @@ package com.example.htmlparser.domains.outputcondition;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.htmlparser.domains.parsing.ParsedResult;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MixAlphabetAndNumberOutputConditionStrategy implements OutputConditionStrategy {
     private final StringBuilder result = new StringBuilder();
 
     @Override
-    public ParsedResult apply(ParsedResult parsedResult) {
-        String content = parsedResult.getContent();
+    public OutputConditionResult apply(OutputConditionResult outputConditionResult) {
+        String content = outputConditionResult.getContent();
 
         if (content == null) {
-            return parsedResult;
+            return outputConditionResult;
         }
 
         mixAlphabetAndNumber(content);
 
-        parsedResult.setContent(result.toString());
+        outputConditionResult.setContent(result.toString());
 
-        return parsedResult;
+        return outputConditionResult;
     }
 
     private void mixAlphabetAndNumber(String content) {

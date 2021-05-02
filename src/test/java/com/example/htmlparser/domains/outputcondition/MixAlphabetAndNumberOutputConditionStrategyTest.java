@@ -1,6 +1,5 @@
 package com.example.htmlparser.domains.outputcondition;
 
-import com.example.htmlparser.domains.parsing.ParsedResult;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -8,20 +7,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MixAlphabetAndNumberOutputConditionStrategyTest {
-    private final ParsedResult parsedResult = new ParsedResult();
+    private final OutputConditionResult outputConditionResult = new OutputConditionResult();
 
     @Test
     public void testContentIsNull() {
         // Given
-        parsedResult.setContent(null);
+        outputConditionResult.setContent(null);
 
         OutputConditionStrategy strategy = new MixAlphabetAndNumberOutputConditionStrategy();
 
         // When
-        strategy.apply(parsedResult);
+        strategy.apply(outputConditionResult);
 
         // Then
-        assertThat(parsedResult.getContent()).isNull();
+        assertThat(outputConditionResult.getContent()).isNull();
     }
 
     @Test
@@ -32,10 +31,10 @@ public class MixAlphabetAndNumberOutputConditionStrategyTest {
         String content3 = "1223334889999aBbCCCCccccDDddfffffhIIiiiiJJJJJjjjjKKkkkkLllNNOOOooQqqVVVvvZzz";
         String content4 = "0000000111111111111222222233333333344444778888888888899999999dijKLMNNnOOorSuuVVvZZz";
 
-        ParsedResult parsedResult1 = new ParsedResult();
-        ParsedResult parsedResult2 = new ParsedResult();
-        ParsedResult parsedResult3 = new ParsedResult();
-        ParsedResult parsedResult4 = new ParsedResult();
+        OutputConditionResult parsedResult1 = new OutputConditionResult();
+        OutputConditionResult parsedResult2 = new OutputConditionResult();
+        OutputConditionResult parsedResult3 = new OutputConditionResult();
+        OutputConditionResult parsedResult4 = new OutputConditionResult();
 
         parsedResult1.setContent(content1);
         parsedResult2.setContent(content2);

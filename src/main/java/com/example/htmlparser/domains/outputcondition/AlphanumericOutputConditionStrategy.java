@@ -1,15 +1,16 @@
 package com.example.htmlparser.domains.outputcondition;
 
-import com.example.htmlparser.domains.parsing.ParsedResult;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AlphanumericOutputConditionStrategy implements OutputConditionStrategy {
     @Override
-    public ParsedResult apply(ParsedResult parsedResult) {
-        String content = parsedResult.getContent();
-        parsedResult.setContent(
+    public OutputConditionResult apply(OutputConditionResult outputConditionResult) {
+        String content = outputConditionResult.getContent();
+        outputConditionResult.setContent(
             content.replaceAll("[^A-Za-z0-9]", "")
         );
 
-        return parsedResult;
+        return outputConditionResult;
     }
 }

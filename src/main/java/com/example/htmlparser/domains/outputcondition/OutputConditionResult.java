@@ -1,7 +1,7 @@
-package com.example.htmlparser.domains.parsing;
+package com.example.htmlparser.domains.outputcondition;
 
-public class ParsedResult {
-    String content;
+public class OutputConditionResult {
+    private String content;
 
     public String getContent() {
         return this.content;
