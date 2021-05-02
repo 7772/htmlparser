@@ -1,26 +1,29 @@
 package com.example.htmlparser.domains.print;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DividedResult {
-    private final List<String> quotients = new ArrayList<>();
+    private final List<String> results;
 
-    private final List<String> remainders = new ArrayList<>();
-
-    public List<String> getQuotients() {
-        return this.quotients;
+    public DividedResult(List<String> results) {
+        this.results = results;
     }
 
-    public List<String> getRemainders() {
-        return this.remainders;
+    public List<String> get() {
+        return this.results;
     }
 
-    public void addQuotient(String quotient) {
-        quotients.add(quotient);
+    public List<String> getQuotients(int outputUnit) {
+        return results
+            .stream()
+            .filter(result -> result.length() == outputUnit)
+            .collect(Collectors.toList());
     }
 
-    public void addRemainder(String remainder) {
-        remainders.add(remainder);
+    public String getRemainder(int outputUnit) {
+        String lastElement = results.get(results.size() - 1);
+
+        return lastElement.length() != outputUnit ? lastElement : null;
     }
 }

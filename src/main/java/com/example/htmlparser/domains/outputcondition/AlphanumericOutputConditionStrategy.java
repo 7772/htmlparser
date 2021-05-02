@@ -7,6 +7,11 @@ public class AlphanumericOutputConditionStrategy implements OutputConditionStrat
     @Override
     public OutputConditionResult apply(OutputConditionResult outputConditionResult) {
         String content = outputConditionResult.getContent();
+
+        if (content == null) {
+            return outputConditionResult;
+        }
+
         outputConditionResult.setContent(
             content.replaceAll("[^A-Za-z0-9]", "")
         );

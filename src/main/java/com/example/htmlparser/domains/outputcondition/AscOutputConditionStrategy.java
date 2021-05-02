@@ -22,6 +22,8 @@ public class AscOutputConditionStrategy implements OutputConditionStrategy {
 
         outputConditionResult.setContent(result.toString());
 
+        initStringBuilder();
+
         return outputConditionResult;
     }
 
@@ -77,5 +79,9 @@ public class AscOutputConditionStrategy implements OutputConditionStrategy {
 
     private int toUppercase(char c) {
         return ((int) c - 32);
+    }
+
+    private void initStringBuilder() {
+        result.setLength(0);
     }
 }

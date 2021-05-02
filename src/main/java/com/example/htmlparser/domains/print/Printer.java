@@ -27,16 +27,24 @@ public class Printer {
         strategies.add(mixAlphabetAndNumberOutputConditionStrategy);
     }
 
-    public DividedResult print(String parsedContent, int outputUnits) {
+    public DividedResult print(String parsedContent, int outputUnit) {
         OutputConditionResult outputConditionResult = new OutputConditionResult();
         outputConditionResult.setContent(parsedContent);
 
+        applyStrategies(outputConditionResult);
+
+        return divide(outputConditionResult.getContent(), outputUnit);
+    }
+
+    private void applyStrategies(OutputConditionResult outputConditionResult) {
         strategies.stream().forEach(strategy -> {
             strategy.apply(outputConditionResult);
         });
+    }
 
-        // TODO: Divide
+    private DividedResult divide(String content, int outputUnit) {
+        Divider divider = new Divider();
 
-        return null;
+        return divider.divide(content, outputUnit);
     }
 }

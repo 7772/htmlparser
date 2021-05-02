@@ -21,6 +21,8 @@ public class MixAlphabetAndNumberOutputConditionStrategy implements OutputCondit
 
         outputConditionResult.setContent(result.toString());
 
+        initStringBuilder();
+
         return outputConditionResult;
     }
 
@@ -54,5 +56,9 @@ public class MixAlphabetAndNumberOutputConditionStrategy implements OutputCondit
         for (int i = index; i < onlyNumbers.size(); i++) {
             result.append(onlyNumbers.get(i));
         }
+    }
+
+    private void initStringBuilder() {
+        result.setLength(0);
     }
 }
