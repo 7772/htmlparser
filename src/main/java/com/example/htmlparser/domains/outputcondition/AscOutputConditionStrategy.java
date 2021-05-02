@@ -64,6 +64,7 @@ public class AscOutputConditionStrategy implements OutputConditionStrategy {
                 if (index >= onlyLowercases.size()) break;
 
                 char c = onlyLowercases.get(index);
+
                 if ((int) onlyUppercases.get(i) > toUppercase(c)) {
                     result.append(c);
                     index++;

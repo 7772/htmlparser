@@ -50,7 +50,6 @@ public class ParseHTMLControllerPrintTest {
         String parserType = "ALL_TEXT";
         int outputUnit = 3;
 
-
         List<String> mockResult = new ArrayList<>();
         mockResult.add("A1a");
         mockResult.add("2B3");

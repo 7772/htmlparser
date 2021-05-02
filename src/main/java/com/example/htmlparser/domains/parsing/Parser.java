@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.example.htmlparser.utils.JsoupParser;
 import org.jsoup.nodes.Document;
-import org.jsoup.safety.Whitelist;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,7 +35,7 @@ public class Parser {
             throw new RuntimeException("URL 분석에 실패했습니다. 다시 시도해 주세요.");
         } finally {
             if (result != null) {
-                result = result.replaceAll("(\\r\\n|\\r|\\n|\\n\\r|\\p{Z}|\\t)","");
+                result = result.replaceAll("(\\r\\n|\\r|\\n|\\n\\r|\\p{Z}|\\t)", "");
             }
         }
 

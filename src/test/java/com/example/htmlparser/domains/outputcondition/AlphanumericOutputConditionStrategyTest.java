@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.matchesPattern;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AlphanumericOutputConditionStrategyTest {
