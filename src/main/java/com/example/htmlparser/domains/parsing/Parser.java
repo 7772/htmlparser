@@ -46,12 +46,12 @@ public class Parser {
     private String parseByAllText(String urlToParse) throws IOException {
         Document document = jsoupParser.parse(urlToParse);
 
-        return document.text();
+        return document.html().replaceAll("\\/|\\<|\\>", "");
     }
 
     private String parseByExceptForHTML(String urlToParse) throws IOException {
         Document document = jsoupParser.parse(urlToParse);
 
-        return document.html().replaceAll("\\/|\\<|\\>", "");
+        return document.text();
     }
 }

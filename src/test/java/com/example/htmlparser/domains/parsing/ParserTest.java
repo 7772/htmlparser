@@ -54,12 +54,17 @@ public class ParserTest {
         when(jsoupParser.parse(anyString()))
             .thenReturn(document);
 
-        String mockDocumentText = "NAVER 뉴스스탠드 바로가기 주제별캐스트 바로가기 타임스퀘어";
+        String mockDocumentHTML = "!doctype html\n"
+            + "html lang=\"ko\" data-dark=\"false\" \n"
+            + " head \n"
+            + "  meta charset=\"utf-8\" \n"
+            + "  titleNAVERtitle \n";
 
-        when(document.text())
-            .thenReturn(mockDocumentText);
+        when(document.html())
+            .thenReturn(mockDocumentHTML);
 
-        String expectedResult = "NAVER뉴스스탠드바로가기주제별캐스트바로가기타임스퀘어";
+        String expectedResult = "!doctypehtmlhtmllang=\"ko\"data-dark=\""
+            + "false\"headmetacharset=\"utf-8\"titleNAVERtitle";
 
         // When
         String result = parser.parse(url, ParserType.ALL_TEXT);
@@ -75,17 +80,12 @@ public class ParserTest {
         when(jsoupParser.parse(anyString()))
             .thenReturn(document);
 
-        String mockDocumentHTML = "!doctype html\n"
-                + "html lang=\"ko\" data-dark=\"false\" \n"
-                + " head \n"
-                + "  meta charset=\"utf-8\" \n"
-                + "  titleNAVERtitle \n";
+        String mockDocumentText = "NAVER 뉴스스탠드 바로가기 주제별캐스트 바로가기 타임스퀘어";
 
-        when(document.html())
-            .thenReturn(mockDocumentHTML);
+        when(document.text())
+            .thenReturn(mockDocumentText);
 
-        String expectedResult = "!doctypehtmlhtmllang=\"ko\"data-dark=\""
-            + "false\"headmetacharset=\"utf-8\"titleNAVERtitle";
+        String expectedResult = "NAVER뉴스스탠드바로가기주제별캐스트바로가기타임스퀘어";
 
         // When
         String result = parser.parse(url, ParserType.EXCEPT_FOR_HTML);
